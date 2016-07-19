@@ -49,8 +49,7 @@ class PaymasterController extends Controller
 
         if($response == '' || $pm_amount < $order_total) {
             echo 'NO';
-        }
-        else {
+        } else {
             $orderModel->setPaymentStatus('yes');
             $orderModel->save(false);
             echo 'YES';
