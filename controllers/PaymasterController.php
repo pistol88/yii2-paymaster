@@ -34,11 +34,11 @@ class PaymasterController extends Controller
 
         $response = base64_decode(yii::$app->request->post('LMI_HASH'));
 
-        $pm_merchant_id = yii::$app->request->post('LMI_MERCHANT_ID');
-        $pm_order_id    = (int)yii::$app->request->post('LMI_PAYMENT_NO');
+        $pmMerchantId = yii::$app->request->post('LMI_MERCHANT_ID');
+        $pmOrderId    = (int)yii::$app->request->post('LMI_PAYMENT_NO');
 
         $orderModel = yii::$app->orderModel;
-        $orderModel = $orderModel::findOne($pm_order_id);
+        $orderModel = $orderModel::findOne($pmOrderId);
 
         if(!$orderModel) {
             throw new NotFoundHttpException('The requested order does not exist.');
