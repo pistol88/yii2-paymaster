@@ -3,12 +3,14 @@ namespace pistol88\paymaster\controllers;
 
 use yii;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class PaymasterController extends Controller
 {
     function actionResult()
 	{
-        if(!isset(yii::$app->request->post('LMI_PAYMENT_NO'))) {
+
+        if(!yii::$app->request->post('LMI_PAYMENT_NO')) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 		
