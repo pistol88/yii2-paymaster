@@ -69,6 +69,6 @@ php composer update
 ]);?>
 ```
 
-*autoSend - нужно ли автоматически отправлять форму заказа
-*orderModel - экземпляр модели заказа, имплементирующий interfaces/Order
-*description - описание платежа
+* autoSend - нужно ли автоматически отправлять форму заказа
+* orderModel - экземпляр модели заказа, имплементирующий interfaces/Order
+* description - описание платежа
