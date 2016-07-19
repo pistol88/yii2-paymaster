@@ -1,0 +1,30 @@
+{
+    "name": "pistol88/yii2-paymaster",
+    "description": "Payment widget for paymaster.ru",
+    "keywords": ["yii2", "yii 2", "application", "payment", "paymaster", "module", "pistol88"],
+    "homepage": "https://github.com/pistol88/yii2-paymaster",
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "support": {
+        "source": "https://github.com/pistol88/yii2-paymaster"
+    },
+    "authors": [
+        {
+            "name": "Ilya Pistol",
+            "email": "pistol88@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "*"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "autoload": {
+        "psr-4": {
+            "pistol88\\paymaster\\": ""
+        }
+    }
+}
