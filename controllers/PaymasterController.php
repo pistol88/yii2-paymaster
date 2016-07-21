@@ -7,24 +7,30 @@ use yii\web\NotFoundHttpException;
 
 class PaymasterController extends Controller
 {
+    public function beforeAction($action)
+    {
+        $this->enableCsrfValidation = false;
+
+        return parent::beforeAction($action);
+    }
+    
     function actionResult()
 	{
-
         if(!yii::$app->request->post('LMI_PAYMENT_NO')) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 		
         $check = yii::$app->request->post('LMI_MERCHANT_ID').';'.
-                    yii::$app->request->post('LMI_PAYMENT_NO').';'.
-                    yii::$app->request->post('LMI_SYS_PAYMENT_ID').';'.
-                    yii::$app->request->post('LMI_SYS_PAYMENT_DATE').';'.
-                    yii::$app->request->post('LMI_PAYMENT_AMOUNT').';'.
-                    yii::$app->request->post('LMI_CURRENCY').';'.
-                    yii::$app->request->post('LMI_PAID_AMOUNT').';'.
-                    yii::$app->request->post('LMI_PAID_CURRENCY').';'.
-                    yii::$app->request->post('LMI_PAYMENT_SYSTEM').';'.
-                    yii::$app->request->post('LMI_SIM_MODE').';'.
-                    $this->module->secret;
+                yii::$app->request->post('LMI_PAYMENT_NO').';'.
+                yii::$app->request->post('LMI_SYS_PAYMENT_ID').';'.
+                yii::$app->request->post('LMI_SYS_PAYMENT_DATE').';'.
+                yii::$app->request->post('LMI_PAYMENT_AMOUNT').';'.
+                yii::$app->request->post('LMI_CURRENCY').';'.
+                yii::$app->request->post('LMI_PAID_AMOUNT').';'.
+                yii::$app->request->post('LMI_PAID_CURRENCY').';'.
+                yii::$app->request->post('LMI_PAYMENT_SYSTEM').';'.
+                yii::$app->request->post('LMI_SIM_MODE').';'.
+                $this->module->secret;
 
         $hash = base64_encode(md5($check, true));
         

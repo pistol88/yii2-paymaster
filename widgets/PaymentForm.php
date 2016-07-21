@@ -20,13 +20,11 @@ class PaymentForm extends \yii\base\Widget
             return false;
         }
         
-		return $this->render('paymentForm',
-            [
-                'orderModel' => $this->orderModel,
-                'module' => yii::$app->getModule('paymaster'),
-                'description' => $this->description,
-                'autoSend' => $this->autoSend,
-            ]
-        );
+		return $this->render('paymentForm', [
+            'orderModel' => $this->orderModel,
+            'module' => yii::$app->getModule('paymaster'),
+            'description' => $this->description,
+            'autoSend' => $this->autoSend,
+        ]);
 	}
 }
