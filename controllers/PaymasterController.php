@@ -35,7 +35,7 @@ class PaymasterController extends Controller
         $hash = base64_encode(md5($check, true));
         
         if(yii::$app->request->post('LMI_HASH') != $hash) {
-            die('NO');
+            return 'NO';
         }
 
         $response = base64_decode(yii::$app->request->post('LMI_HASH'));
@@ -56,11 +56,12 @@ class PaymasterController extends Controller
         $order_total = number_format($orderModel->getCost(), 2, '.', '');
 
         if($response == '' || $pm_amount < $order_total) {
-            echo 'NO';
+            return 'NO';
         } else {
             $orderModel->setPaymentStatus('yes');
             $orderModel->save(false);
-            echo 'YES';
+            
+            return 'YES';
         }
     }
 }
