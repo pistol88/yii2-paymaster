@@ -9,22 +9,22 @@ class PaymentForm extends \yii\base\Widget
     public $orderModel;
     public $autoSend = false;
 
-	public function init()
-	{
-		return parent::init();
-	}
+    public function init()
+    {
+        return parent::init();
+    }
 
-	public function run()
-	{
+    public function run()
+    {
         if(empty($this->orderModel)) {
             return false;
         }
         
-		return $this->render('paymentForm', [
+        return $this->render('paymentForm', [
             'orderModel' => $this->orderModel,
             'module' => yii::$app->getModule('paymaster'),
             'description' => $this->description,
             'autoSend' => $this->autoSend,
         ]);
-	}
+    }
 }
