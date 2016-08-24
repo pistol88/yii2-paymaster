@@ -55,7 +55,7 @@ class PaymasterController extends Controller
 
         $order_total = number_format($orderModel->getCost(), 2, '.', '');
 
-        if($response == '' || $pm_amount < $order_total) {
+        if($response == '' | $pm_amount < $order_total) {
             return 'NO';
         } else {
             $orderModel->setPaymentStatus('yes');
