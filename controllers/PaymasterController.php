@@ -15,7 +15,7 @@ class PaymasterController extends Controller
     }
     
     function actionResult()
-	{
+    {
         if(!yii::$app->request->post('LMI_PAYMENT_NO')) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
