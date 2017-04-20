@@ -43,7 +43,7 @@ class PaymasterController extends Controller
         $pmMerchantId = yii::$app->request->post('LMI_MERCHANT_ID');
         $pmOrderId    = (int)yii::$app->request->post('LMI_PAYMENT_NO');
 
-        $orderModel = yii::$app->orderModel;
+        $orderModel = $this->module->orderModel;
         $orderModel = $orderModel::findOne($pmOrderId);
 
         if(!$orderModel) {
