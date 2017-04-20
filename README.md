@@ -37,21 +37,11 @@ php composer update
             'thanksUrl' => '/page/spasibo-za-zakaz', //Страница, куда попадает пользователь после оплаты. Туда ГЕТ параметром будет передан также номер заказа.
             'failUrl' => '/page/problema-s-oplatoy', //Страница, куда попадает пользовать в случае неудачной оплаты.
             'currency' => 'RUB', //Яснопонятно
+            'orderModel' => 'pistol88\order\models\Order', //Модель заказа. Эта модель должна имплементировать интерфейс pistol88\paymaster\interfaces\Order. В момент списания денег будет вызываться $model->setPaymentStatus('yes').
         ],
         //...
     ],
 ```
-
-В сервисный слой (components) добавляем модель своего заказа (в случае с pistol88\order - не обязательно):
-```php
-    'components' => [
-        'orderModel' => ['class' => 'pistol88\order\models\Order'],
-        //...
-    ],
-```
-
-Эта модель должна имплементировать интерфейс pistol88\paymaster\interfaces\Order. В момент списания денег будет вызываться $model->setPaymentStatus('yes').
-
 
 Чтобы срабатывал редирект обратно и оповещение сайта о списании денег, не забудьте поставить галочку "Разрешена замена URL" в настройках магазина в кабинете Паймастера.
 
